@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Phone, MapPin, Mail } from 'lucide-react';
+import { Phone, MapPin, Mail } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/menuData';
 
 function InstagramIcon({ className = "w-4 h-4" }) {
@@ -14,91 +14,69 @@ function InstagramIcon({ className = "w-4 h-4" }) {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#040a15] border-t border-white/10 pt-16 pb-12 text-slate-400 text-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        
+    <footer className="bg-[#050912] border-t border-[#d9a441]/15 pt-14 pb-10 text-stone-400 text-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          
-          {/* Brand info */}
+
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <img
                 src="/images/logo.png"
                 alt={RESTAURANT_INFO.name}
-                className="h-12 w-auto object-contain"
+                className="h-11 w-auto object-contain"
               />
               <div>
-                <span className="text-xl font-black text-white font-heading block">
+                <span className="text-xl font-bold text-stone-50 font-heading block leading-none">
                   ASERE
                 </span>
-                <span className="text-xs font-bold text-red-500 uppercase tracking-widest block -mt-1">
-                  Cuban Food
+                <span className="text-[10px] font-bold text-[#d9a441] uppercase tracking-[0.2em] block mt-1">
+                  Cocina Cubana
                 </span>
               </div>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              Auténtica cocina tradicional cubana en Pflugerville, Texas. Recetas criollas familiares preparadas a diario con los mejores ingredientes.
+            <p className="text-xs text-stone-400 leading-relaxed">
+              Auténtica cocina tradicional cubana en Pflugerville, Texas. Recetas criollas familiares preparadas a diario.
             </p>
-            <div className="pt-1">
-              <span className="inline-block px-3 py-1 bg-red-950/70 border border-red-500/30 text-red-300 text-xs font-bold rounded-lg">
-                🎉 Gran Apertura: {RESTAURANT_INFO.openingDate}
-              </span>
-            </div>
+            <span className="inline-block px-3 py-1 bg-[#c82829]/15 border border-[#c82829]/30 text-stone-200 text-xs font-semibold rounded-lg">
+              Apertura: {RESTAURANT_INFO.openingDate}
+            </span>
           </div>
 
-          {/* Quick Links */}
           <div className="space-y-3">
-            <h4 className="text-white font-bold text-sm uppercase tracking-wider font-heading">
-              Navegación Rápida
+            <h4 className="text-stone-100 font-bold text-xs uppercase tracking-widest">
+              Navegación
             </h4>
             <ul className="space-y-2 text-xs">
-              <li>
-                <a href="#menu" className="hover:text-red-400 transition-colors">
-                  Menú Digital Interactivo
-                </a>
-              </li>
-              <li>
-                <a href="#galeria" className="hover:text-red-400 transition-colors">
-                  Galería de Platos
-                </a>
-              </li>
-              <li>
-                <a href="#nosotros" className="hover:text-red-400 transition-colors">
-                  Tradición & Chef Sergio Regueira
-                </a>
-              </li>
-              <li>
-                <a href="#ubicacion" className="hover:text-red-400 transition-colors">
-                  Ubicación & Horarios
-                </a>
-              </li>
+              <li><a href="#menu" className="hover:text-[#d9a441] transition-colors">Menú Digital</a></li>
+              <li><a href="#guarniciones" className="hover:text-[#d9a441] transition-colors">Acompañamientos Gratis</a></li>
+              <li><a href="#nosotros" className="hover:text-[#d9a441] transition-colors">Chef Sergio Regueira</a></li>
+              <li><a href="#ubicacion" className="hover:text-[#d9a441] transition-colors">Ubicación & Horarios</a></li>
             </ul>
           </div>
 
-          {/* Contact */}
           <div className="space-y-3">
-            <h4 className="text-white font-bold text-sm uppercase tracking-wider font-heading">
+            <h4 className="text-stone-100 font-bold text-xs uppercase tracking-widest">
               Contacto Directo
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2.5 text-xs">
               <li className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#c82829] shrink-0 mt-0.5" />
                 <span>{RESTAURANT_INFO.address}</span>
               </li>
               <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-amber-400 shrink-0" />
+                <Phone className="w-4 h-4 text-[#d9a441] shrink-0" />
                 <a href={`tel:${RESTAURANT_INFO.rawPhone}`} className="hover:text-white">
                   {RESTAURANT_INFO.phone}
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-blue-400 shrink-0" />
+                <Mail className="w-4 h-4 text-[#d9a441] shrink-0" />
                 <a href={`mailto:${RESTAURANT_INFO.email}`} className="hover:text-white">
                   {RESTAURANT_INFO.email}
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <InstagramIcon className="w-4 h-4 text-pink-400 shrink-0" />
+                <InstagramIcon className="w-4 h-4 text-[#d9a441] shrink-0" />
                 <a href={RESTAURANT_INFO.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white">
                   {RESTAURANT_INFO.instagram}
                 </a>
@@ -106,33 +84,26 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Business Hours */}
           <div className="space-y-3">
-            <h4 className="text-white font-bold text-sm uppercase tracking-wider font-heading">
-              Horario de Atención
+            <h4 className="text-stone-100 font-bold text-xs uppercase tracking-widest">
+              Horario
             </h4>
-            <div className="text-xs space-y-1.5 text-slate-300">
-              <p><strong className="text-white">Lun - Jue:</strong> 11:00 AM - 9:00 PM</p>
-              <p><strong className="text-white">Vie - Sáb:</strong> 11:00 AM - 10:00 PM</p>
-              <p><strong className="text-amber-400">Domingo:</strong> 12:00 PM - 8:00 PM</p>
-              <p className="text-[11px] text-slate-400 pt-1">
-                Servicio para llevar, pedidos anticipados y eventos.
+            <div className="text-xs space-y-1.5 text-stone-300">
+              <p><strong className="text-stone-100">Lun - Jue:</strong> 11:00 AM - 9:00 PM</p>
+              <p><strong className="text-stone-100">Vie - Sáb:</strong> 11:00 AM - 10:00 PM</p>
+              <p><strong className="text-[#d9a441]">Domingo:</strong> 12:00 PM - 8:00 PM</p>
+              <p className="text-[11px] text-stone-500 pt-1">
+                Takeout, pedidos anticipados y eventos.
               </p>
             </div>
           </div>
 
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+        <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
           <p>© {new Date().getFullYear()} {RESTAURANT_INFO.name}. Todos los derechos reservados.</p>
-          
-          <div className="flex items-center gap-1.5 text-slate-400">
-            <span>Desarrollado con pasión para</span>
-            <span className="font-bold text-white">Rueda la Rola Media</span>
-          </div>
+          <span>Pflugerville, Texas</span>
         </div>
-
       </div>
     </footer>
   );

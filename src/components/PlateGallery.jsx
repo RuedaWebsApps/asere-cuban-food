@@ -1,113 +1,65 @@
 import React from 'react';
-import { Camera, Eye, Sparkles } from 'lucide-react';
-
-const PLATED_DISHES = [
-  {
-    title: "Pernil Asado Criollo",
-    category: "Plato Principal",
-    description: "Servido en plato de porcelana con cuerito dorado crujiente y aroma a naranja agria.",
-    image: "/images/pernil-asado-plate.png",
-    portion: "½ lb o 1 lb"
-  },
-  {
-    title: "Tamales Cubanos Tradicionales",
-    category: "Antojito Casero",
-    description: "Masa tierna de maíz al vapor en vajilla blanca con tierno sofrito y masitas de cerdo.",
-    image: "/images/tamales-plate.png",
-    portion: "Pieza completa"
-  },
-  {
-    title: "Sándwich Cubano Clásico",
-    category: "Especialidad",
-    description: "Prensado y tostado a la perfección en plancha, cortado en diagonal sobre plato cerámico.",
-    image: "/images/sandwich-plate.png",
-    portion: "Entero"
-  },
-  {
-    title: "Yuca con Mojo Criollo",
-    category: "Guarnición",
-    description: "Yuca cocida mantequillosa con mojo de ajo dorado, chicharrones y toque de cilantro.",
-    image: "/images/yuca-plate.png",
-    portion: "Porción generosa"
-  },
-  {
-    title: "Ajiaco Cubano Criollo",
-    category: "Sopa Tradicional",
-    description: "Servido en cuenco blanco hondo, rebosante de viandas campesinas y carnes tiernas.",
-    image: "/images/ajiaco-plate.png",
-    portion: "Tazón 12 oz"
-  },
-  {
-    title: "Arroz Congrí (Moros y Cristianos)",
-    category: "Acompañamiento",
-    description: "Arroz grano a grano sazonado con frijoles negros y sofrito cubano de la casa.",
-    image: "/images/congri-plate.png",
-    portion: "Incluido Gratis con principales"
-  }
-];
+import { Check } from 'lucide-react';
+import { FREE_SIDES_DETAILS } from '../data/menuData';
 
 export default function PlateGallery() {
   return (
-    <section id="galeria" className="py-20 bg-[#071326] relative border-t border-b border-white/5">
+    <section id="guarniciones" className="py-16 lg:py-20 bg-[#091120] border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-950/70 border border-blue-500/40 text-blue-300 text-xs font-bold uppercase tracking-widest">
-            <Camera className="w-3.5 h-3.5" />
-            <span>Galería de Emplatados Profesionales</span>
+
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 pb-6 border-b border-[#d9a441]/15">
+          <div className="space-y-2 max-w-2xl">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#d9a441]">
+              Incluido en cada plato principal
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-stone-50 font-heading">
+              Acompañamientos de la Casa
+            </h2>
           </div>
-
-          <h2 className="text-3xl sm:text-5xl font-black text-white font-heading">
-            Nuestros Platos al Detalle
-          </h2>
-
-          <p className="text-slate-300 text-base sm:text-lg">
-            Así servimos nuestra comida: emplatada con esmero, ingredientes frescos y la presentación que merece la auténtica gastronomía cubana.
+          <p className="text-sm text-stone-400 max-w-md">
+            Elige gratis 1 de estas 4 guarniciones tradicionales al ordenar cualquiera de nuestros platos principales por ½ lb o 1 lb.
           </p>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {PLATED_DISHES.map((dish, index) => (
+        {/* Sides Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {FREE_SIDES_DETAILS.map((side) => (
             <div
-              key={index}
-              className="group bg-[#0c1c38]/80 border border-white/10 rounded-3xl overflow-hidden hover:border-red-500/50 transition-all duration-300 hover:shadow-2xl hover:translate-y-[-4px] flex flex-col"
+              key={side.id}
+              className="bistro-card rounded-2xl overflow-hidden flex flex-col justify-between"
             >
-              {/* Image Frame */}
-              <div className="h-64 sm:h-72 bg-gradient-to-b from-[#0a1529] to-[#040914] p-4 flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-radial-glow opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <img
-                  src={dish.image}
-                  alt={dish.title}
-                  className="max-h-full max-w-full object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.7)] group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-                
-                <span className="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-slate-300 text-[11px] font-semibold px-2.5 py-1 rounded-lg border border-white/10">
-                  {dish.category}
-                </span>
-              </div>
+              {side.image ? (
+                <div className="relative aspect-[3/2] w-full overflow-hidden">
+                  <img
+                    src={side.image}
+                    alt={side.name}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b1322]/70 via-transparent to-transparent" />
+                </div>
+              ) : null}
 
-              {/* Text Info */}
-              <div className="p-6 flex-1 flex flex-col justify-between space-y-3 bg-[#0a1830]">
-                <div>
-                  <h3 className="text-xl font-bold text-white font-heading group-hover:text-red-400 transition-colors">
-                    {dish.title}
+              <div className={`p-5 flex-1 flex flex-col justify-between ${!side.image ? 'pt-6' : ''}`}>
+                <div className="space-y-2">
+                  <div className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-emerald-400">
+                    <Check className="w-3.5 h-3.5" />
+                    <span>{side.badge}</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-stone-50 font-heading leading-snug">
+                    {side.name}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-300 mt-1.5 leading-relaxed">
-                    {dish.description}
+                  <p className="text-xs text-stone-300 leading-relaxed">
+                    {side.description}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs">
-                  <span className="text-amber-400 font-bold">
-                    {dish.portion}
-                  </span>
-                  <span className="text-slate-400 font-medium">
-                    Servido fresco a diario
-                  </span>
-                </div>
+                {!side.image && (
+                  <div className="mt-4 pt-3 border-t border-white/5 text-[11px] text-stone-400 font-medium">
+                    Disponible con ½ lb o 1 lb
+                  </div>
+                )}
               </div>
             </div>
           ))}
