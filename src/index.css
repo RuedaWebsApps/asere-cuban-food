@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-[#060e1d] text-slate-100 antialiased selection:bg-red-600 selection:text-white;
+    font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, .font-heading {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-weight: 800;
+  }
+}
+
+.font-serif-accent {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Gradients & Glows */
+.bg-cuban-pattern {
+  background-color: #060e1d;
+  background-image: radial-gradient(rgba(13, 62, 168, 0.25) 1px, transparent 1px), radial-gradient(rgba(217, 30, 43, 0.15) 1px, #060e1d 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+
+.text-gradient-red-gold {
+  background: linear-gradient(135deg, #ef4444 0%, #f97316 50%, #eab308 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-blue-cyan {
+  background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-glass {
+  background: rgba(13, 27, 49, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card-glass:hover {
+  border-color: rgba(220, 38, 38, 0.4);
+}
