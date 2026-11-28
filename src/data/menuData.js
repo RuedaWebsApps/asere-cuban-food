@@ -199,12 +199,12 @@ export const MENU_ITEMS = [
   // ESPECIALES & SOPAS
   {
     id: "sandwich-cubano",
-    name: "Sándwich Cubano Clásico",
+    name: "Sándwich Cubano",
     category: "especiales",
     description: "Pan cubano prensado y tostado a la plancha con pernil asado jugoso, jamón, queso suizo derretido, pepinillos crujientes y mostaza amarilla.",
     price: 12.99,
     tag: "Especialidad",
-    image: null,
+    image: "/images/sandwich-menu.jpg",
     popular: true
   },
   {

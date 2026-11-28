@@ -133,9 +133,15 @@ export default function Menu({ onAddToCart }) {
                         </h3>
                       </div>
 
-                      <span className="text-xl font-bold text-[#d9a441] tabular-nums shrink-0">
-                        ${currentPrice.toFixed(2)}
-                      </span>
+                      {currentPrice != null ? (
+                        <span className="text-xl font-bold text-[#d9a441] tabular-nums shrink-0">
+                          ${currentPrice.toFixed(2)}
+                        </span>
+                      ) : (
+                        <span className="text-[11px] font-semibold uppercase tracking-wider text-[#f3d18a] bg-[#d9a441]/10 border border-[#d9a441]/30 px-2.5 py-1 rounded-lg shrink-0">
+                          Precio por definir
+                        </span>
+                      )}
                     </div>
 
                     <p className="text-xs sm:text-sm text-stone-300 mt-2 leading-relaxed">
@@ -196,7 +202,11 @@ export default function Menu({ onAddToCart }) {
                   {/* Card Footer */}
                   <div className="pt-3 border-t border-white/10 flex items-center justify-between">
                     <span className="text-[11px] text-stone-400 font-medium">
-                      {isMain ? `Porción ${portionKey === 'half' ? '½ lb' : '1 lb'} + guarnición` : 'Porción individual'}
+                      {isMain
+                        ? `Porción ${portionKey === 'half' ? '½ lb' : '1 lb'} + guarnición`
+                        : currentPrice != null
+                          ? 'Porción individual'
+                          : 'Precio pendiente por confirmar'}
                     </span>
 
                     <button
@@ -204,7 +214,7 @@ export default function Menu({ onAddToCart }) {
                       className="inline-flex items-center gap-1.5 bg-[#c82829] hover:bg-[#b01f20] text-white text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-lg transition-colors cursor-pointer"
                     >
                       <Plus className="w-3.5 h-3.5" />
-                      <span>Agregar</span>
+                      <span>{currentPrice != null ? 'Agregar' : 'Consultar'}</span>
                     </button>
                   </div>
                 </div>

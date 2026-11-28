@@ -9,7 +9,11 @@ export default function OrderDrawer({ isOpen, onClose, cartItems, onUpdateQty, o
 
   if (!isOpen) return null;
 
-  const totalAmount = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const totalAmount = cartItems.reduce(
+    (acc, item) => acc + (item.price != null ? item.price * item.quantity : 0),
+    0
+  );
+  const hasPendingPrices = cartItems.some((item) => item.price == null);
 
   const handleSendWhatsApp = () => {
     if (cartItems.length === 0) return;
@@ -19,10 +23,18 @@ export default function OrderDrawer({ isOpen, onClose, cartItems, onUpdateQty, o
     cartItems.forEach((item, index) => {
       const portionStr = item.portionLabel ? ` (${item.portionLabel})` : '';
       const sideStr = item.side ? `\n   - Acompañamiento: ${item.side}` : '';
-      message += `${index + 1}. *${item.quantity}x* ${item.name}${portionStr} - $${(item.price * item.quantity).toFixed(2)}${sideStr}\n`;
+      const priceStr =
+        item.price != null ? `$${(item.price * item.quantity).toFixed(2)}` : 'Precio por confirmar';
+      message += `${index + 1}. *${item.quantity}x* ${item.name}${portionStr} - ${priceStr}${sideStr}\n`;
     });
 
-    message += `\n*Total Estimado:* $${totalAmount.toFixed(2)}`;
+    const totalStr =
+      hasPendingPrices && totalAmount === 0
+        ? 'Por confirmar'
+        : hasPendingPrices
+          ? `$${totalAmount.toFixed(2)} (+ artículos por confirmar)`
+          : `$${totalAmount.toFixed(2)}`;
+    message += `\n*Total Estimado:* ${totalStr}`;
     message += `\n*Modalidad:* ${orderType}`;
     if (customerName.trim()) {
       message += `\n*Cliente:* ${customerName.trim()}`;
@@ -148,7 +160,7 @@ export default function OrderDrawer({ isOpen, onClose, cartItems, onUpdateQty, o
                         </div>
 
                         <span className="text-sm font-bold text-[#d9a441] tabular-nums">
-                          ${(item.price * item.quantity).toFixed(2)}
+                          {item.price != null ? `$${(item.price * item.quantity).toFixed(2)}` : 'Por confirmar'}
                         </span>
                       </div>
                     </div>
@@ -207,8 +219,12 @@ export default function OrderDrawer({ isOpen, onClose, cartItems, onUpdateQty, o
             <div className="p-5 border-t border-white/10 bg-[#070d19] space-y-3">
               <div className="flex items-center justify-between text-base">
                 <span className="font-semibold text-stone-300">Total Estimado:</span>
-                <span className="text-2xl font-bold text-[#d9a441] tabular-nums">
-                  ${totalAmount.toFixed(2)}
+                <span className="text-xl font-bold text-[#d9a441] tabular-nums">
+                  {hasPendingPrices && totalAmount === 0
+                    ? 'Por confirmar'
+                    : hasPendingPrices
+                      ? `$${totalAmount.toFixed(2)} + pend.`
+                      : `$${totalAmount.toFixed(2)}`}
                 </span>
               </div>
 

@@ -77,7 +77,7 @@ export default function Hero({ onExploreMenu }) {
           {/* Right Photography Feature */}
           <div className="lg:col-span-5">
             <div className="bistro-card rounded-2xl overflow-hidden">
-              <div className="relative aspect-[16/10] w-full overflow-hidden">
+              <div className="relative aspect-[4/3] w-full overflow-hidden">
                 <img
                   src="/images/pernil-hero.jpg"
                   alt="Pernil Asado Criollo de ASERE Cuban Food"

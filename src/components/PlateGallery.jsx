@@ -30,7 +30,7 @@ export default function PlateGallery() {
               className="bistro-card rounded-2xl overflow-hidden flex flex-col justify-between"
             >
               {side.image ? (
-                <div className="relative aspect-[3/2] w-full overflow-hidden">
+                <div className="relative aspect-[4/3] w-full overflow-hidden">
                   <img
                     src={side.image}
                     alt={side.name}
